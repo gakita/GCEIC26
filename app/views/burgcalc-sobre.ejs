@@ -53,34 +53,32 @@
       box-shadow: 0 14px 35px rgba(33, 26, 22, 0.08);
     }
 
+    .foto-integrantes {
+      margin-top: 22px;
+      margin-bottom: 22px;
+    }
+
+    .foto-integrantes img {
+      display: block;
+      width: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 8px;
+      border: 1px solid #e4ddd2;
+    }
+
+    .foto-integrantes figcaption {
+      margin-top: 10px;
+      color: #695f58;
+      font-size: 0.95rem;
+    }
+
     .integrantes {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 22px;
-    }
-
-    .integrante {
-      border: 1px solid #e4ddd2;
-      border-radius: 8px;
-      padding: 18px;
-      background: #fffdf9;
-    }
-
-    .foto {
-      height: 160px;
-      border: 1px dashed #b7a99a;
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      color: #695f58;
-      margin-bottom: 14px;
-    }
-
-    @media (max-width: 700px) {
-      .integrantes {
-        grid-template-columns: 1fr;
-      }
+      gap: 8px;
+      margin: 0;
+      padding-left: 20px;
     }
   </style>
 </head>
@@ -101,16 +99,14 @@
       <p>BURGCALC calcula o custo de produção de hambúrgueres a partir dos custos dos ingredientes, embalagem, quantidade produzida e margem de lucro desejada.</p>
 
       <h2>Integrantes</h2>
-      <div class="integrantes">
-        <article class="integrante">
-          <div class="foto">Foto do integrante</div>
-          <strong>André Domingues Teixeira</strong>
-        </article>
-        <article class="integrante">
-          <div class="foto">Foto do integrante</div>
-          <strong>Pedro Henrique Kachan</strong>
-        </article>
-      </div>
+      <figure class="foto-integrantes">
+        <img src="/images/integrantes-burgcalc.jpg" alt="Foto dos integrantes do projeto BURGCALC">
+        <figcaption>Foto dos integrantes do BURGCALC</figcaption>
+      </figure>
+      <ul class="integrantes">
+        <li><strong>André Domingues Teixeira</strong></li>
+        <li><strong>Pedro Henrique Kachan</strong></li>
+      </ul>
     </section>
   </main>
 </body>
