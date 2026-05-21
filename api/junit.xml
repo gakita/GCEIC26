@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="9" failures="0" errors="0" time="1.102">
+  <testsuite name="BURGCALC - calculo unitario" errors="0" failures="0" skipped="0" timestamp="2026-05-21T12:32:09" time="0.49" tests="6">
+    <testcase classname="BURGCALC - calculo unitario deve calcular custo total, custo unitario, preco sugerido e lucro por unidade" name="BURGCALC - calculo unitario deve calcular custo total, custo unitario, preco sugerido e lucro por unidade" time="0.003">
+    </testcase>
+    <testcase classname="BURGCALC - calculo unitario deve rejeitar quantidade igual ou menor que zero" name="BURGCALC - calculo unitario deve rejeitar quantidade igual ou menor que zero" time="0.015">
+    </testcase>
+    <testcase classname="BURGCALC - calculo unitario deve rejeitar entradas invalidas" name="BURGCALC - calculo unitario deve rejeitar entradas invalidas" time="0.001">
+    </testcase>
+    <testcase classname="BURGCALC - calculo unitario deve rejeitar margem de lucro negativa" name="BURGCALC - calculo unitario deve rejeitar margem de lucro negativa" time="0.004">
+    </testcase>
+    <testcase classname="BURGCALC - API POST /api/BURGCALC deve retornar dados calculados com payload correto" name="BURGCALC - API POST /api/BURGCALC deve retornar dados calculados com payload correto" time="0.048">
+    </testcase>
+    <testcase classname="BURGCALC - API POST /api/BURGCALC deve retornar erro com dados incorretos" name="BURGCALC - API POST /api/BURGCALC deve retornar erro com dados incorretos" time="0.007">
+    </testcase>
+  </testsuite>
+  <testsuite name="Teste de Saude -&gt; GET /health" errors="0" failures="0" skipped="0" timestamp="2026-05-21T12:32:09" time="0.219" tests="2">
+    <testcase classname="Teste de Saude -&gt; GET /health deve retornar status ok" name="Teste de Saude -&gt; GET /health deve retornar status ok" time="0.011">
+    </testcase>
+    <testcase classname="GET /api/tabelas deve retornar a tebela de constantes " name="GET /api/tabelas deve retornar a tebela de constantes " time="0.01">
+    </testcase>
+  </testsuite>
+  <testsuite name="Teste de unitario" errors="0" failures="0" skipped="0" timestamp="2026-05-21T12:32:10" time="0.096" tests="1">
+    <testcase classname="Teste de unitario deve retornar calculos" name="Teste de unitario deve retornar calculos" time="0.012">
+    </testcase>
+  </testsuite>
+</testsuites>

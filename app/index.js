@@ -13,6 +13,8 @@ const API_URL = process.env.API_URL || 'http://localhost:3001';
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/vendor/react', express.static(path.join(__dirname, 'node_modules', 'react', 'umd')));
+app.use('/vendor/react-dom', express.static(path.join(__dirname, 'node_modules', 'react-dom', 'umd')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({
@@ -29,8 +31,15 @@ function requireAuth(req, res, next) {
 }
 
 app.get('/', (req, res) => {
-  if (req.session.user) return res.redirect('/dashboard');
-  res.render('login', { error: null });
+  res.render('Inicial');
+});
+
+app.get('/Inicial', (req, res) => {
+  res.render('Inicial');
+});
+
+app.get('/inicial', (req, res) => {
+  res.render('Inicial');
 });
 
 app.get('/login', (req, res) => {
@@ -41,6 +50,56 @@ app.get('/login', (req, res) => {
 app.get('/logout', (req, res) => {
   req.session.destroy();
   res.redirect('/login');
+});
+
+app.get('/BURGCALC', (req, res) => {
+  res.redirect('/BURGCALC/login');
+});
+
+app.get('/BURGCALC/login', (req, res) => {
+  if (req.query.ready === '1') {
+    return res.render('burgcalc-login', { error: null });
+  }
+
+  res.render('burgcalc-splash', { loginUrl: '/BURGCALC/login?ready=1' });
+});
+
+app.post('/BURGCALC/login', (req, res) => {
+  const { username, password } = req.body;
+
+  if (username === 'admin' && password === 'admin') {
+    return res.redirect('/BURGCALC/calculo');
+  }
+
+  res.render('burgcalc-login', { error: 'Usuario ou senha invalidos' });
+});
+
+app.get('/BURGCALC/calculo', (req, res) => {
+  res.render('burgcalc-calculo', { apiPath: '/BURGCALC/api/calcular' });
+});
+
+app.get('/BURGCALC/sobre', (req, res) => {
+  res.render('burgcalc-sobre');
+});
+
+app.get('/BURGCALC/help', (req, res) => {
+  res.render('burgcalc-help');
+});
+
+app.post('/BURGCALC/api/calcular', async (req, res) => {
+  try {
+    const fetch = (await import('node-fetch')).default;
+    const response = await fetch(`${API_URL}/api/BURGCALC`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(req.body),
+    });
+    const data = await response.json();
+
+    res.status(response.status).json(data);
+  } catch (err) {
+    res.status(400).json({ success: false, error: err.message });
+  }
 });
 
 

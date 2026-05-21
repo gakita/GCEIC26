@@ -46,6 +46,24 @@ app.post('/api/calcular', (req, res) => {
   }
 });
 
+function burgcalcHandler(req, res) {
+  try {
+    const { calcularBurgcalc } = require('./funcoes');
+    const dados = req.body;
+
+    if (!dados || typeof dados !== 'object') {
+      return res.status(400).json({ success: false, error: 'Corpo da requisicao invalido' });
+    }
+
+    const resultado = calcularBurgcalc(dados);
+    return res.status(200).json({ success: true, data: resultado });
+  } catch (err) {
+    return res.status(400).json({ success: false, error: err.message });
+  }
+}
+
+// POST /api/BURGCALC
+app.post('/api/BURGCALC', burgcalcHandler);
+app.post('/api/burgcalc', burgcalcHandler);
+
 module.exports = app
-
-
