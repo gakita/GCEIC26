@@ -3,6 +3,9 @@ name: Teste and Deploy
 on:
   push:
     branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+  workflow_dispatch:
 
   
 jobs:
@@ -54,7 +57,7 @@ jobs:
 
   deploy-api:
     needs: unitTestApi
-    if: success()    
+    if: github.event_name == 'push' && success()    
     runs-on: ubuntu-latest
     steps:
       - name: Deploy_Project_API
@@ -115,7 +118,7 @@ jobs:
         
   unitTestApp:
     needs: detect-changes
-    if: needs.detect-changes.outputs.app == 'true'
+    if: github.event_name == 'push' && needs.detect-changes.outputs.app == 'true'
     runs-on: ubuntu-latest
     permissions: write-all
 
