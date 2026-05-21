@@ -2,7 +2,7 @@ name: Teste and Deploy
 
 on:
   push:
-    branches: [grupo21/BrugCalc]
+    branches: [grupo21/BurgCalc]
 
   
 jobs:
