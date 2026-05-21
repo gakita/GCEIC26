@@ -2,10 +2,7 @@ name: Teste and Deploy
 
 on:
   push:
-    branches: [main, dev]
-  pull_request:
-    branches: [main, dev]
-  workflow_dispatch:
+    branches: [grupo21/BrugCalc]
 
   
 jobs:
@@ -57,7 +54,7 @@ jobs:
 
   deploy-api:
     needs: unitTestApi
-    if: github.event_name == 'push' && success()    
+    if: success()    
     runs-on: ubuntu-latest
     steps:
       - name: Deploy_Project_API
@@ -118,7 +115,7 @@ jobs:
         
   unitTestApp:
     needs: detect-changes
-    if: github.event_name == 'push' && needs.detect-changes.outputs.app == 'true'
+    if: needs.detect-changes.outputs.app == 'true'
     runs-on: ubuntu-latest
     permissions: write-all
 
