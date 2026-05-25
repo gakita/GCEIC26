@@ -59,9 +59,15 @@ jobs:
           PORT: 3001
           NODE_ENV: test
       - name: Instala as dependencias do projeto
-        working-directory: app 
+        working-directory: app
         run: npm ci
-        
+
+      - name: Build do app React
+        working-directory: app
+        run: npm run build
+        env:
+          VITE_API_URL: http://localhost:3001
+
       - name: Subir o site em background
         working-directory: app
         run: npm run start &
