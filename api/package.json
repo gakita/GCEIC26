@@ -1,27 +1,48 @@
 {
-  "name": "gceic",
+  "name": "impostos-nf",
   "version": "1.0.0",
-  "description": "Exemplo para testes",
+  "description": "API para cálculo de impostos (ICMS, IPI, PIS/COFINS) para Notas Fiscais.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "jest --coverage --verbose --ci --reporters=default --testResultsProcessor=jest-junit"
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "vitest run",
+    "lint": "biome check src",
+    "format": "biome format src --write"
   },
-  "keywords": [
-    "teste",
-    "CI",
-    "CD"
-  ],
-  "author": "SLMM",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
+  "packageManager": "pnpm@10.27.0",
   "dependencies": {
-    "cors": "^2.8.6",
-    "express": "^5.2.1",
-    "helmet": "^8.1.0"
+    "@fastify/cors": "^11.2.0",
+    "@fastify/swagger": "^9.7.0",
+    "@fastify/swagger-ui": "^5.2.6",
+    "dotenv": "^17.4.2",
+    "fastify": "^5.8.5",
+    "fastify-plugin": "^5.1.0",
+    "fastify-type-provider-zod": "^6.1.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "jest": "^30.3.0",
-    "jest-junit": "^17.0.0",
-    "supertest": "^7.2.2"
-  }
+    "@biomejs/biome": "^2.4.14",
+    "@types/node": "^25.9.0",
+    "supertest": "^7.2.2",
+    "tsx": "^4.22.2",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.5"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgabrieldsl/impostos-nf-backend.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jgabrieldsl/impostos-nf-backend/issues"
+  },
+  "homepage": "https://github.com/jgabrieldsl/impostos-nf-backend#readme"
 }
